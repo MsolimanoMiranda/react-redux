@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import * as serviceWorker from './serviceWorker';
+import { makeStore } from './redux/reducers';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { StoreContext } from 'redux-react-hook';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './App.scss';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const {store} = makeStore();
+
+
+    ReactDOM.render(
+        <StoreContext.Provider value={store}>
+        
+            <App store={store} />
+
+        </StoreContext.Provider>
+        , document.getElementById('root'));
+        serviceWorker.register();

@@ -1,0 +1,125 @@
+@import '../../assets/styles/helpers/_variables.scss';
+@import '../../assets/styles/helpers/_utils.scss';
+@import '../../assets/styles/helpers/_responsive.scss';
+
+/* ------------------------------------------
+ *          Componente alertas
+ * ------------------------------------------*/
+.alert {
+  width: 100%;
+  position: fixed;
+  top: 54px;
+  left: 0;
+  z-index: 98;
+  overflow: hidden;
+  transition: transform .4s cubic-bezier(0.5, 0, 0, 1);
+  transform: translateY(-100%);
+  border-bottom: 1px solid transparent;
+  @include desktop { top: 64px; }
+
+  &__body {
+    font-family: $font-roboto;
+    font-weight: $font-regular;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.2px;
+    color: $gray1;
+    position: relative;
+    padding: 20px 0;
+    @include tablet { padding: 25px 0; }
+  }
+
+  &__close {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    position: absolute;
+    top: 13px;
+    right: width-column(2, 26);
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 8px;
+    margin-right: -9px;
+    cursor: pointer;
+    @include icon-font;
+    @include tablet {
+      top: 50%;
+      right: width-column(2, 31);
+      transform: translateY(-50%);
+    }
+
+    &::before { content: '\e90b'; }
+  }
+
+  &__content {
+    padding: 0 0 0 36px;
+    margin-left: width-column(2, 26);
+    margin-right: width-column(5, 26);
+    position: relative;
+    @include tablet {
+      padding-left: 40px;
+      margin-left: width-column(2, 31);
+      margin-right: width-column(5, 31);
+    }
+
+    strong { font-weight: $font-medium; }
+
+    &::before {
+      display: block;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      color: #fff;
+      text-align: center;
+      box-sizing: border-box;
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include icon-font;
+    }
+  }
+
+  &.is-success {
+    background: $green3;
+    border-color: $green2;
+
+    .alert__content::before {
+      font-size: 8px;
+      content: '\e90a';
+      padding-top: 8px;
+      background: $green;
+    }
+  }
+
+  &.is-danger {
+    background: $pink4;
+    border-color: $pink3;
+
+    .alert__content::before {
+      font-size: 9px;
+      font-weight: bold;
+      content: '\e908';
+      padding-top: 7px;
+      background: $red3;
+    }
+  }
+
+  &.is-warning {
+    background: $orange2;
+    border-color: $orange3;
+
+    .alert__content::before {
+      font-size: 9px;
+      font-weight: bold;
+      content: '\e908';
+      padding-top: 7px;
+      background: $orange;
+    }
+  }
+
+  &.is-login { top: 0; }
+
+  &.opened {
+    transform: translateY(0);
+  }
+}

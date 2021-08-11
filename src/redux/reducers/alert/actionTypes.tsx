@@ -1,0 +1,5 @@
+export const ADD_ALERT = 'ADD_ALERT';
+export const ADD_ALERT_SUCCESS = 'ADD_ALERT_SUCCESS';
+export const ADD_ALERT_DANGER = 'ADD_ALERT_DANGER';
+export const ADD_ALERT_WARNING = 'ADD_ALERT_WARNING';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
